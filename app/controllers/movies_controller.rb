@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  before_filter :admin_user,     only: [:destroy, :create, :update]
+  before_filter :signed_in_and_admin_user,     only: [:destroy, :create, :update]
 
   def new
   	@movie = Movie.new
@@ -32,16 +32,14 @@ class MoviesController < ApplicationController
   end
 
 private
-	def signed_in_user
-		unless signed_in?
+	def signed_in_and_admin_user
+		if !signed_in?
 	        store_location
 			redirect_to signin_url, notice: 'Please sign in'
+		else 
+			signed_in_and_admin_user
 		end
 	end
-
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
-    end
 
 
 
