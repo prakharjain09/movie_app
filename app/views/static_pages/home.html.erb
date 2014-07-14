@@ -1,13 +1,9 @@
 <div class="center hero-unit">
-  <h1>Welcome to the Sample App</h1>
-
-  <h2>
-    This is the home page for the
-    <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
-    sample application.
-  </h2>
-
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+  <h1>Welcome to the Movie_DB</h1>
+  <% if !signed_in? %>
+  	<%= link_to "Sign up now!", signup_path, class: "btn  btn-primary" %> to give reviews or <%= link_to "sign in", signin_path %> if you already have an account
+  <% end %>
 </div>
+<%= render 'movies/all_movies' %>
 
-<%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
+

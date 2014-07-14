@@ -1,0 +1,9 @@
+<li>
+  <%= link_to movie.name, movie %>, <%= movie.release_date %>
+
+  <% 
+  if signed_in? && current_user.admin? %>
+    | <%= link_to "delete", movie, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  <% end %>
+</li>

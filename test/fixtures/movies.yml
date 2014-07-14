@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: movies
+#
+#  id           :integer          not null, primary key
+#  name         :string(255)
+#  director     :string(255)
+#  info         :string(255)
+#  cast         :string(255)
+#  release_date :date
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  director: MyString
+  info: MyString
+  cast: MyString
+  release_date: 2014-07-14
+
+two:
+  name: MyString
+  director: MyString
+  info: MyString
+  cast: MyString
+  release_date: 2014-07-14

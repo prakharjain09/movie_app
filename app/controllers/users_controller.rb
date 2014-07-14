@@ -6,7 +6,8 @@ class UsersController < ApplicationController
   def index
   	if current_user.admin?
 	  @users = User.paginate(page: params[:page])
-	else 
+      #@users, @alphaParams = User.alpha_paginate(params[:letter]){|user| user.name}
+    else 
 		redirect_to current_user
 	end
   end

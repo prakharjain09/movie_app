@@ -3,8 +3,11 @@
 
 <%= will_paginate %>
 
-<ul class="users">
-	<%= render @users %>
-</ul>
+  <% @users.each do |user| %>
+  	<ul class="users">
+		<%= render user %>
+	</ul>
+  <% end %>
 
 <%= will_paginate %>
+
