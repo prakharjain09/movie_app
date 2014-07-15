@@ -1,4 +1,5 @@
 class MoviesController < ApplicationController
+  before_filter :signed_in_and_admin_user,     only: [:destroy, :create, :update]
 
   def new
   	@movie = Movie.new
@@ -23,9 +24,24 @@ class MoviesController < ApplicationController
   end
 
 
-  def delete
-  	
+  def destroy
+    Movie.find(params[:id]).destroy
+    flash[:success] = "Movie destroyed."
+    redirect_to movies_url
+
   end
+
+private
+	def signed_in_and_admin_user
+		if !signed_in?
+	        store_location
+			redirect_to signin_url, notice: 'Please sign in'
+		else 
+			signed_in_and_admin_user
+		end
+	end
+
+
 
 
 
