@@ -3,6 +3,7 @@ MovieApp::Application.routes.draw do
   resources :users
   resources :movies
   resources :sessions, only: [:new, :create, :destroy]
+  resources :reviews, only: [:create, :destroy]
 
   root to: 'static_pages#home'
 

@@ -1,6 +1,7 @@
 <% provide(:title, 'Create New Movie') %>
 <h1>Enter Movie Details</h1>
 
+<div class="movie_form"> 
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(@movie) do |f| %>
@@ -15,12 +16,13 @@
       <%= f.text_field :director %>
 
       <%= f.label :info %>
-      <%= f.text_field :info %>
+      <%= f.text_area :info %>
 
       <%= f.label :release_date %>
-      <%= f.date_select :release_date %>
+      <span class="datetime"><%= f.date_select :release_date %></span>
 
       <%= f.submit "Create Movie", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
+</div>
 </div>

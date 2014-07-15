@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  before_filter :signed_in_and_admin_user,     only: [:destroy, :create, :update]
+  before_filter :signed_in_and_admin_user,     only: [:destroy, :create, :update, :new]
 
   def new
   	@movie = Movie.new
@@ -17,6 +17,7 @@ class MoviesController < ApplicationController
 
   def show
   	@movie = Movie.find(params[:id])
+    @review = current_user.reviews.build(movie_id: params[:id]) if signed_in?
   end
 
   def index
@@ -35,9 +36,11 @@ private
 	def signed_in_and_admin_user
 		if !signed_in?
 	        store_location
-			redirect_to signin_url, notice: 'Please sign in'
+    			redirect_to signin_url, notice: 'Please sign in'
 		else 
-			signed_in_and_admin_user
+      if !current_user.admin?
+          redirect_to root_url, notice: 'You need admin rights to acces the page'
+      end
 		end
 	end
 

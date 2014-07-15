@@ -22,4 +22,15 @@
         </tr>
     </tbody>
 </table>
+<% if signed_in? %>
+    <section>
+        <%= render 'shared/review_form' %>
+    </section>
+<% end %>
 
+<% if @movie.reviews.any? %>
+  <h3>Reviews (<%= @movie.reviews.count %>)</h3>
+  <ol class="review">
+    <%= render @movie.reviews %>
+  </ol>
+<% end %>

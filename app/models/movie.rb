@@ -14,6 +14,7 @@
 
 class Movie < ActiveRecord::Base
   attr_accessible :cast, :director, :info, :name, :release_date
+  has_many :reviews, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 50 }
 
