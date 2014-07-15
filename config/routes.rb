@@ -4,10 +4,12 @@ MovieApp::Application.routes.draw do
   resources :movies
   resources :sessions, only: [:new, :create, :destroy]
   resources :reviews, only: [:create, :destroy]
+  resources :ratings, only: [:create, :update]
 
   root to: 'static_pages#home'
 
   match '/signup',  to: 'users#new'
+  match '/movies/search',  to: 'movies#search'
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
 

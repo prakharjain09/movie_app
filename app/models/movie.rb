@@ -13,10 +13,22 @@
 #
 
 class Movie < ActiveRecord::Base
-  attr_accessible :cast, :director, :info, :name, :release_date
+  attr_accessible :cast, :director, :info, :name, :release_date, :total_rating, :total_votes
+  after_initialize :init
+
   has_many :reviews, dependent: :destroy
+  has_many :ratings, dependent: :destroy
+
 
   validates :name, presence: true, length: { maximum: 50 }
 
+	def self.search(query)
+	  where("name like ?", "%#{query}%")
+	end
+
+  def init
+    self.total_rating  ||= 0           #will set the default value only if it's nil
+    self.total_votes ||= 0 
+  end
 
 end

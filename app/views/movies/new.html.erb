@@ -19,7 +19,7 @@
       <%= f.text_area :info %>
 
       <%= f.label :release_date %>
-      <span class="datetime"><%= f.date_select :release_date %></span>
+      <span class="datetime"><%= f.date_select :release_date, start_year: 1950 %></span>
 
       <%= f.submit "Create Movie", class: "btn btn-large btn-primary" %>
     <% end %>

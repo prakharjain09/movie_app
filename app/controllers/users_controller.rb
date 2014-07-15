@@ -5,11 +5,11 @@ class UsersController < ApplicationController
 
   def index
   	if current_user.admin?
-	  @users = User.paginate(page: params[:page])
+  	  @users = User.paginate(page: params[:page])
       #@users, @alphaParams = User.alpha_paginate(params[:letter]){|user| user.name}
     else 
-		redirect_to current_user
-	end
+		  redirect_to current_user
+	  end
   end
 
   def new

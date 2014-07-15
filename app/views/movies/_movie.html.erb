@@ -1,5 +1,5 @@
 <li>
-  <%= link_to movie.name, movie %>, <%= movie.release_date %>
+  <%= link_to movie.name, movie %>, <small>Released date: <%= movie.release_date.strftime("%B %d, %Y") %></small>
 
   <% 
   if signed_in? && current_user.admin? %>

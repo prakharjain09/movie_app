@@ -1,0 +1,7 @@
+Search Results for keyword <b>"<%= @search_string %>"</b>
+</br>
+<% @movies.each do |movie| %>
+<ul class="movies">
+	<%= render movie %>
+</ul>
+<% end %>

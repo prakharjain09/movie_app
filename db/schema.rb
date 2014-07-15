@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140715043616) do
+ActiveRecord::Schema.define(:version => 20140715103716) do
 
   create_table "movies", :force => true do |t|
     t.string   "name"
@@ -19,11 +19,25 @@ ActiveRecord::Schema.define(:version => 20140715043616) do
     t.string   "info"
     t.string   "cast"
     t.date     "release_date"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+    t.integer  "total_rating", :default => 0
+    t.integer  "total_votes",  :default => 0
   end
 
   add_index "movies", ["name"], :name => "index_movies_on_name"
+
+  create_table "ratings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "movie_id"
+    t.integer  "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "ratings", ["movie_id"], :name => "index_ratings_on_movie_id"
+  add_index "ratings", ["user_id", "movie_id"], :name => "index_ratings_on_user_id_and_movie_id", :unique => true
+  add_index "ratings", ["user_id"], :name => "index_ratings_on_user_id"
 
   create_table "reviews", :force => true do |t|
     t.integer  "user_id"

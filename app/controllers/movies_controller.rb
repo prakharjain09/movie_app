@@ -17,11 +17,23 @@ class MoviesController < ApplicationController
 
   def show
   	@movie = Movie.find(params[:id])
-    @review = current_user.reviews.build(movie_id: params[:id]) if signed_in?
+    if signed_in?
+      @review = current_user.reviews.build(movie_id: params[:id])
+      rating = current_user.ratings.find_by_movie_id(params[:id])
+      @rated = false;
+      @rate_value = 0;
+      if !rating.nil?
+        @rated = true;
+        @rate_value = rating.value;
+        @rating = rating
+      else
+        @rating = current_user.ratings.build(movie_id: params[:id], value: 0)
+      end
+    end
   end
 
   def index
-	@movies, @alphaParams = Movie.alpha_paginate(params[:letter]){|movie| movie.name}
+	  @movies, @alphaParams = Movie.alpha_paginate(params[:letter], {:default_field => "All"}){|movie| movie.name}
   end
 
 
@@ -29,7 +41,17 @@ class MoviesController < ApplicationController
     Movie.find(params[:id]).destroy
     flash[:success] = "Movie destroyed."
     redirect_to movies_url
+  end
 
+  def search
+    if !params[:search_string].nil?
+      @search_string = params[:search_string]
+      @movies = Movie.search(@search_string)
+      render 'search'
+    else 
+      @movies, @alphaParams = Movie.alpha_paginate(params[:letter], {:default_field => "All"}){|movie| movie.name}
+      render 'index'
+    end
   end
 
 private
