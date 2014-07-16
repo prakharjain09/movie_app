@@ -1,37 +1,56 @@
-<table class="table movie_table">
-    <tbody>
-        <tr class="active">
-            <th>Name</th>
-            <th><%= @movie.name %></th>
-        </tr>
-        <tr class="active">
-            <th>Cast</th>
-            <th><%= @movie.cast %></th>
-        </tr>
-        <tr class="active">
-            <th>Director</th>
-            <th><%= @movie.director %></th>
-        </tr>
-        <tr class="active">
-            <th>Info</th>
-            <th><%= @movie.info %></th>
-        </tr>
-        <tr class="active">
-            <th>Release Date</th>
-            <th><%= @movie.release_date %></th>
-        </tr>
-        <tr class="active">
-            <th>Rating</th>
-            <th>
-                <% if @movie.total_votes == 0 %>
-                    Not Rated
-                <% else %>
-                    <%= ((@movie.total_rating.to_f / (@movie.total_votes)) * 10).round / 10.0 %> 
-                    (Based on 
-                    <%= @movie.total_votes %> vote)
-                <% end %>
+<table class="movie_table">
+  <colgroup>
+    <col span="1" style="width: 30%;">
+    <col span="1" style="width: 70%;">
+  </colgroup>
+  <tbody>
+    <tr>
+      <th>
+        <%= image_tag @movie.photo.url() %>
+      </th>
+      <th>
+        <table class="table movie_table">
+          <tbody>
 
-            </th>
-        </tr>
-    </tbody>
+            <tr class="active">
+                <th>Name</th>
+                <th><%= @movie.name %></th>
+            </tr>
+            <tr class="active">
+                <th>Cast</th>
+                <th><%= @movie.cast %></th>
+            </tr>
+            <tr class="active">
+                <th>Director</th>
+                <th><%= @movie.director %></th>
+            </tr>
+            <tr class="active">
+                <th>Info</th>
+                <th><%= @movie.info %></th>
+            </tr>
+            <tr class="active">
+                <th>Release Date</th>
+                <th><%= @movie.release_date %></th>
+            </tr>
+            <tr class="active">
+                <th>Rating</th>
+                <th>
+                    <% if @movie.total_votes == 0 %>
+                        Not Rated
+                    <% else %>
+                        <%= ((@movie.total_rating.to_f / (@movie.total_votes)) * 10).round / 10.0 %> 
+                        (Based on 
+                        <%= @movie.total_votes %> vote)
+                    <% end %>
+                </th>
+            </tr>
+
+
+          </tbody>
+        </table>
+
+
+      <th>
+    </tr>
+  </tbody>
 </table>

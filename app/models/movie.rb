@@ -13,8 +13,21 @@
 #
 
 class Movie < ActiveRecord::Base
-  attr_accessible :cast, :director, :info, :name, :release_date, :total_rating, :total_votes
+  attr_accessible :cast, :director, :info, :name, :release_date, :total_rating, :total_votes, :photo
   after_initialize :init
+
+
+
+  has_attached_file :photo, :styles => { :small => "150x150>" },
+                    :url  => "/assets/movies/:id/:style/:basename.:extension",
+                    :path => ":rails_root/public/assets/movies/:id/:style/:basename.:extension",
+                    :default_url => "http://www.purbamedinipur.gov.in/dbf/dbf_photos/image_not_available.jpg"
+
+  validates_attachment_size :photo, :less_than => 5.megabytes
+  validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']
+
+
+
 
   has_many :reviews, dependent: :destroy
   has_many :ratings, dependent: :destroy

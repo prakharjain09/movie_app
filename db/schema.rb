@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140716043014) do
+ActiveRecord::Schema.define(:version => 20140716085225) do
 
   create_table "movies", :force => true do |t|
     t.string   "name"
@@ -19,10 +19,14 @@ ActiveRecord::Schema.define(:version => 20140716043014) do
     t.string   "info"
     t.string   "cast"
     t.date     "release_date"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
-    t.integer  "total_rating", :default => 0
-    t.integer  "total_votes",  :default => 0
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.integer  "total_rating",       :default => 0
+    t.integer  "total_votes",        :default => 0
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   add_index "movies", ["name"], :name => "index_movies_on_name"

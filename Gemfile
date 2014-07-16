@@ -8,7 +8,7 @@ gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'alphabetical_paginate'
 gem 'jquery-raty-rails'
-
+gem 'paperclip', :git =>  "git://github.com/thoughtbot/paperclip.git"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
