@@ -1,15 +1,26 @@
+<table class="movie-container">
+<tr>	
+
+	<td class="movie-image-container">
+        <%= image_tag movie.photo.url(:thumb) %>
+	</td>
 
 
+	<td class="each_movie_info">
+		<div class="each-movie-content">  
+		  <%= link_to movie.name, movie, class: "movie_name" %>
+		  </br><small>Release date: <%= movie.release_date.strftime("%B %d, %Y") %></small>
+		  </br><small>Directed by: <%= movie.director %>  </small>
+		  </br><small><%= pluralize(movie.reviews.count, "review") %></small>
+		</div>
+		<div class="movie-admin">
+			<% if signed_in? && current_user.admin? %>
+		    <%= link_to "delete", movie, method: :delete, data: { confirm: "You sure?" } %>
+		    | <%= link_to "edit", edit_movie_path(movie.id) %>
+		  	<% end %>
+		</div>
 
-<li class="movie_list_element">
-  <%= link_to movie.name, movie, class: "movie_name" %> <small class="release_date" >Released date: <%= movie.release_date.strftime("%B %d, %Y") %></small>
+	</td>
 
-  <% 
-  if signed_in? && current_user.admin? %>
-    | <%= link_to "delete", movie, method: :delete, data: { confirm: "You sure?" } %>
-    | <%= link_to "edit", edit_movie_path(movie.id) %>
-  <% end %>
-  
-  <div class="movie_director"> Directed by: <%= movie.director %>  </div> 	
-  <div class="movie_reviews_count"> | <%= pluralize(movie.reviews.count, "review") %></div>
-</li>
+</tr>
+</table>

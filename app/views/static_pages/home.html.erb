@@ -1,11 +1,12 @@
-<div class="center hero-unit">
-  <h1>Welcome to the Movie_DB</h1>
-  <%= render 'shared/search_form' %>
-  <% if !signed_in? %>
-  	<%= link_to "Sign up now!", signup_path, class: "btn  btn-primary" %> to give reviews or <%= link_to "sign in", signin_path %> if you already have an account
-  <% end %>
+<div class="center">
+<% if !signed_in? %>
+	<%= link_to "Sign up now!", signup_path, class: "btn  btn-primary" %> to give reviews or <%= link_to "sign in", signin_path %> if you already have an account
+<% end %>
 </div>
-<h1>All Movies</h1>
+
+  <%= render 'shared/search_form' %>
+
+<div class="center"><h3>All Movies</h3></div>
 <%= render 'movies/all_movies_paginate', movies: @movies %>
 
 

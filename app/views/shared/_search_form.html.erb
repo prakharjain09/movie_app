@@ -1,5 +1,7 @@
+<div class="center hero-unit search-box-container">
 <div class="search_form">
 <%= form_tag('/movies/search', :method => "post") do %>
 	<%= text_field_tag(:search_string, nil, placeholder: "Write movie name and press enter", onkeydown: 'if (event.keyCode == 13) { this.form.submit(); return false; }', class: "search_field") %>
 <% end %>
+</div>
 </div>
