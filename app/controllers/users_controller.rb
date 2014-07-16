@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
+    @watch_movies = @user.watch_movies
   end
 
   def create

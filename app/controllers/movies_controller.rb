@@ -19,14 +19,8 @@ class MoviesController < ApplicationController
   	@movie = Movie.find(params[:id])
     if signed_in?
       @review = current_user.reviews.build(movie_id: params[:id])
-      rating = current_user.ratings.find_by_movie_id(params[:id])
-      @rated = false;
-      @rate_value = 0;
-      if !rating.nil?
-        @rated = true;
-        @rate_value = rating.value;
-        @rating = rating
-      else
+      @rating = current_user.ratings.find_by_movie_id(params[:id])
+      if @rating.nil?
         @rating = current_user.ratings.build(movie_id: params[:id], value: 0)
       end
     end

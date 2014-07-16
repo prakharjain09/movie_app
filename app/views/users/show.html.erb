@@ -9,3 +9,10 @@
     </section>
   </aside>
 </div>
+
+<h4> My Watch List: </h4>
+<% if @watch_movies.any?
+	<%= render 'movies/watch_list', :watch_list => @watch_movies %>
+<% else %>
+	You have not added any movies to the watchlist.
+<% end %>

@@ -1,67 +1,17 @@
 
 
-    <% if signed_in? %>
-        <div id="rating_div" class="rating">
-        </div>
-        <%= form_for(@rating, :html => {:id => "rating_form"}) do |f| %>
-            <%= f.hidden_field :movie_id %>
-            <%= f.hidden_field :value %>
-        <% end %>
+<% if signed_in? %>
+    <%= render 'watch_movies_form' %>
+    <%= render 'rating_form' %>
 
-        <script type="text/javascript"> 
-            $( document ).ready(function() {
-                $('#rating_div').raty({ 
-                    score: <%= @rating.value %>,
-                    click: function(score, evt) {
-                        document.getElementById('rating_value').value = score;
-                        document.getElementById('rating_form').submit();
-                    }
-                });
-            });
-         </script>
-        
-    <% else %>
-        <%= link_to "Sign in", signin_path %> to rate movie.
-    <% end %>
+    
+<% else %>
+    <%= link_to "Sign in", signin_path %> to rate movie.
+<% end %>
+
+<%= render 'movie_description' %>
 
 
-<table class="table movie_table">
-    <tbody>
-        <tr class="active">
-            <th>Name</th>
-            <th><%= @movie.name %></th>
-        </tr>
-        <tr class="active">
-            <th>Cast</th>
-            <th><%= @movie.cast %></th>
-        </tr>
-        <tr class="active">
-            <th>Director</th>
-            <th><%= @movie.director %></th>
-        </tr>
-        <tr class="active">
-            <th>Info</th>
-            <th><%= @movie.info %></th>
-        </tr>
-        <tr class="active">
-            <th>Release Date</th>
-            <th><%= @movie.release_date %></th>
-        </tr>
-        <tr class="active">
-            <th>Rating</th>
-            <th>
-                <% if @movie.total_votes == 0 %>
-                    Not Rated
-                <% else %>
-                    <%= ((@movie.total_rating.to_f / (@movie.total_votes)) * 10).round / 10.0 %> 
-                    (Based on 
-                    <%= @movie.total_votes %> vote)
-                <% end %>
-
-            </th>
-        </tr>
-    </tbody>
-</table>
 <% if signed_in? %>
     <section>
         <%= render 'shared/review_form' %>

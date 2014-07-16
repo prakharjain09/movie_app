@@ -18,6 +18,7 @@ class Movie < ActiveRecord::Base
 
   has_many :reviews, dependent: :destroy
   has_many :ratings, dependent: :destroy
+  has_many :watch_movies, dependent: :destroy
 
 
   validates :name, presence: true, length: { maximum: 50 }

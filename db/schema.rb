@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140715103716) do
+ActiveRecord::Schema.define(:version => 20140716043014) do
 
   create_table "movies", :force => true do |t|
     t.string   "name"
@@ -59,5 +59,15 @@ ActiveRecord::Schema.define(:version => 20140715103716) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
+
+  create_table "watch_movies", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "movie_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "watch_movies", ["user_id", "movie_id"], :name => "index_watch_movies_on_user_id_and_movie_id", :unique => true
+  add_index "watch_movies", ["user_id"], :name => "index_watch_movies_on_user_id"
 
 end

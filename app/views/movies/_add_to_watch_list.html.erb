@@ -1,0 +1,4 @@
+<%= form_for(current_user.watch_movies.build(movie_id: @movie.id), remote: true) do |f| %>
+  <div><%= f.hidden_field :movie_id %></div>
+  <%= f.submit "Add to watch list", class: "btn btn-large btn-primary" %>
+<% end %>

@@ -1,0 +1,8 @@
+<%= alphabetical_paginate @alphaParams %>
+<div id="pagination_table">
+  <ul class="movies">
+  <% movies.each do |movie| %>
+		<%= render movie %>
+  <% end %>
+  </ul>
+</div>

@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :reviews, dependent: :destroy
   has_many :ratings, dependent: :destroy
+  has_many :watch_movies, dependent: :destroy
 
   before_save :create_remember_token
   before_save { |user| user.email = email.downcase }
@@ -28,6 +29,19 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
+
+
+  def watch_list_contains?(movie)
+    watch_movies.find_by_movie_id(movie.id)
+  end
+
+  def add_to_watch_list!(movie)
+    watch_movies.create!(movie_id: movie.id)
+  end
+
+  def remove_from_watch_list!(movie)
+    watch_movies.find_by_movie_id(movie.id).destroy
+  end
 
 private
     def create_remember_token

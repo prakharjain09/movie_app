@@ -189,17 +189,7 @@ input {
 }
 
 
-/* movie table */
-.movie_table {
-
-
-}
-
-.movie_form {
-	textarea {
-   	    height: 8em;
-	}
-}
+/**************** date time  *****************/
 
 .datetime {
 	select {
@@ -237,38 +227,44 @@ input {
 
 
 
-/***************** Rating   ********************/
-
-.rating {
-    float:left;
-    width:300px;
-}
-.rating span { float:right; position:relative; }
-.rating span input {
-    position:absolute;
-    top:0px;
-    left:0px;
-    opacity:0;
-}
-.rating span label {
-    display:inline-block;
-    width:30px;
-    height:30px;
-    text-align:center;
-    color:#FFF;
-    background:#ccc;
-    font-size:30px;
-    margin-right:2px;
-    line-height:30px;
-    border-radius:50%;
-    -webkit-border-radius:50%;
-}
-.rating span:hover ~ span label,
-.rating span:hover label,
-.rating span.checked label,
-.rating span.checked ~ span label {
-    background:#F90;
-    color:#FFF;
+/***************** Watch List  ********************/
+.watch_list_button {
+    float:right;
+    background:none!important;
+    border:none; 
+    padding:0!important;
+    /*border is optional*/
+    border-bottom:1px solid #444; 
 }
 
 
+
+/********** movie table ***************/
+.movie_table {
+
+
+}
+
+.movie_list_element {
+  margin-bottom: 10px;
+}
+
+.movie_form {
+  textarea {
+        height: 8em;
+  }
+}
+
+.movie_name {
+}
+
+.release_date {
+  float: right;
+}
+
+.movie_director {
+}
+
+.movie_cast {
+  
+}
