@@ -18,7 +18,7 @@ class Movie < ActiveRecord::Base
 
 
 
-  has_attached_file :photo, :styles => { :small => "150x150>" },
+  has_attached_file :photo, :styles => { :small => "150x150>",:thumb => "100x100>"},
                     :url  => "/assets/movies/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/assets/movies/:id/:style/:basename.:extension",
                     :default_url => "http://www.purbamedinipur.gov.in/dbf/dbf_photos/image_not_available.jpg"

@@ -1,3 +1,9 @@
+<h1 id="movie_title"> <%= @movie.name %></h1> 
+<center>  <% if signed_in? && current_user.admin? %>
+    <%= link_to "delete", @movie, method: :delete, data: { confirm: "You sure?" } %>
+    | <%= link_to "edit", edit_movie_path(@movie.id) %>
+  <% end %>
+</center>
 <table class="movie_table">
   <colgroup>
     <col span="1" style="width: 30%;">
@@ -11,11 +17,6 @@
       <th>
         <table class="table movie_table">
           <tbody>
-
-            <tr class="active">
-                <th>Name</th>
-                <th><%= @movie.name %></th>
-            </tr>
             <tr class="active">
                 <th>Cast</th>
                 <th><%= @movie.cast %></th>
@@ -25,12 +26,12 @@
                 <th><%= @movie.director %></th>
             </tr>
             <tr class="active">
-                <th>Info</th>
-                <th><%= @movie.info %></th>
-            </tr>
-            <tr class="active">
                 <th>Release Date</th>
                 <th><%= @movie.release_date %></th>
+            </tr>
+            <tr class="active">
+                <th>Info</th>
+                <th><%= @movie.info %></th>
             </tr>
             <tr class="active">
                 <th>Rating</th>
@@ -44,13 +45,12 @@
                     <% end %>
                 </th>
             </tr>
-
+        
 
           </tbody>
         </table>
-
-
-      <th>
+        <th>
     </tr>
+
   </tbody>
 </table>

@@ -1,14 +1,15 @@
+
+
+
 <li class="movie_list_element">
-  <%= link_to movie.name, movie, class: "movie_name" %>, <small class="release_date" >Released date: <%= movie.release_date.strftime("%B %d, %Y") %></small>
+  <%= link_to movie.name, movie, class: "movie_name" %> <small class="release_date" >Released date: <%= movie.release_date.strftime("%B %d, %Y") %></small>
 
   <% 
   if signed_in? && current_user.admin? %>
-    | <%= link_to "delete", movie, method: :delete,
-                                  data: { confirm: "You sure?" } %>
+    | <%= link_to "delete", movie, method: :delete, data: { confirm: "You sure?" } %>
+    | <%= link_to "edit", edit_movie_path(movie.id) %>
   <% end %>
   
   <div class="movie_director"> Directed by: <%= movie.director %>  </div> 	
-  <div class="movie_cast"> Cast: <%= movie.cast %> </div>
-
-
+  <div class="movie_reviews_count"> | <%= pluralize(movie.reviews.count, "review") %></div>
 </li>

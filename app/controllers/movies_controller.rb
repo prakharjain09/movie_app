@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  before_filter :signed_in_and_admin_user,     only: [:destroy, :create, :update, :new]
+  before_filter :signed_in_and_admin_user,     only: [:destroy, :create, :update, :new, :edit]
 
   def new
   	@movie = Movie.new
@@ -45,6 +45,20 @@ class MoviesController < ApplicationController
     else 
       @movies, @alphaParams = Movie.alpha_paginate(params[:letter], {:default_field => "All"}){|movie| movie.name}
       render 'index'
+    end
+  end
+
+  def edit   
+    @movie = Movie.find(params[:id])
+  end
+
+  def update
+    @movie = Movie.find(params[:id])
+    if @movie.update_attributes(params[:movie])
+      flash[:success] = "Movie Updated"
+      redirect_to @movie
+    else
+      render 'edit'
     end
   end
 

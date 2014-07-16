@@ -1,0 +1,9 @@
+<table class="user_ratings_table">
+<% ratings.each do |rating| %>
+	<% movie = rating.movie %>
+  	<tr>
+	<td><li> <%= link_to movie.name, movie %> </li></td>
+	<td ><div id="rating_value_for_user"><%= rating.value %>/5 </div></td>
+  	</tr>
+<% end %>
+</table>

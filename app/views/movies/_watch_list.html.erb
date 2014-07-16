@@ -1,14 +1,19 @@
-<ul class="movie">
-<% watch_list.each do |watch_obj| %>
-	<li>
-	  <% movie = watch_obj.movie %>
-	  <%= link_to movie.name, movie %>, <small>Release date: <%= movie.release_date.strftime("%B %d, %Y") %></small>
-	  <% if signed_in? %>
-	  	<%= form_for(watch_obj, html: { method: :delete }) do |f| %>
-			<%= f.submit "Remove from watch list", class: "watch_list_button" %>
-		<% end %>
-	  <% end %>
-	</li>
-
-<% end %>
-</ul>
+<table class="user_watch_list_table">
+	<% watch_list.each do |watch_obj| %>
+	    <% movie = watch_obj.movie %>
+	    <tr>
+	    <td>
+				<li>
+				  <%= link_to movie.name, movie %>
+				</li>
+	    </td>
+	    <td>
+				  <% if signed_in? && current_user?(@user) %>
+				  	<%= form_for(watch_obj, html: { method: :delete }) do |f| %>
+						<%= f.submit "Remove ", class: "watch_list_button" %>
+					<% end %>
+				  <% end %>
+	    </td>
+	  </tr>
+	<% end %>
+</table>

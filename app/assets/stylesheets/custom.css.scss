@@ -221,30 +221,78 @@ input {
 
 
 
-.search_form {
-	
+.search_field {
+  width: 90%;
+	height: 40px!important;
+  align: center;
 }
 
+.user_ratings_table {
+  margin-left: 40px;   
+}
 
+.user_watch_list_table {
+  margin-left: 40px;   
+}
+
+#rating_value_for_user{
+  margin-left: 40px;     
+}
 
 /***************** Watch List  ********************/
+
 .watch_list_button {
-    float:right;
     background:none!important;
-    border:none; 
+    border:none;
     padding:0!important;
-    /*border is optional*/
-    border-bottom:1px solid #444; 
+    float: left;
+    margin-top:0px;
+    margin-bottom:0px;
+    margin-left:20px;
+
+
 }
 
 
+#watch_list_form {
+  float: left;    
+}
+
 .rating {
+  padding-left:20px;
+  float: right;
+}
+
+#rating_container {
+  float: right;
+}
+
+#movie_title {
+  clear: both;      
+}
+
+
+/********** movie table ***************/
+#movie_title {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+#movie_list_details {
   
 }
 
-/********** movie table ***************/
-.movie_table {
+#image_thumbnail {
+  
+}
 
+
+.movie_table {
+  tr {
+    margin-bottom: 20px;
+  }
 
 }
 
@@ -266,8 +314,20 @@ input {
 }
 
 .movie_director {
+  clear:both;
+  float:left;
+  width: auto;
 }
 
 .movie_cast {
-  
+  float:left;
+  margin-left: 30px;
+}
+
+.movie_reviews_count {
+  margin-left: 20px;
+}
+
+.each_movie_info {
+  padding-left:50px;
 }

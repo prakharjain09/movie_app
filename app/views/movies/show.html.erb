@@ -3,8 +3,6 @@
 <% if signed_in? %>
     <%= render 'watch_movies_form' %>
     <%= render 'rating_form' %>
-
-    
 <% else %>
     <%= link_to "Sign in", signin_path %> to rate movie.
 <% end %>

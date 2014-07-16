@@ -11,8 +11,16 @@
 </div>
 
 <h4> My Watch List: </h4>
-<% if @watch_movies.any?
+<% if @watch_movies.any? %>
 	<%= render 'movies/watch_list', :watch_list => @watch_movies %>
 <% else %>
 	You have not added any movies to the watchlist.
+<% end %>
+
+
+<h4> Rated by me: </h4>
+<% if @user.ratings.any? %>
+	<%= render 'users/user_ratings', :ratings => @user.ratings %>
+<% else %>
+	You have not rated any movie.
 <% end %>
