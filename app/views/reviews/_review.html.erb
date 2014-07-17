@@ -1,13 +1,15 @@
-<li>
+<li class="single-review">
   <span class="content"><%= review.content %></span>
   </br>
   <span class="timestamp">
-    Posted <%= time_ago_in_words(review.created_at) %> ago by <%= review.user.name %>
+    <small>Posted <%= time_ago_in_words(review.created_at) %> ago by <%= review.user.name %> </small>
+    <div class="movie-admin">
     <% if signed_in? %>
     	<% if current_user.admin? || current_user?(review.user) %>
-    		| <%= link_to "delete review", review, method: :delete, data: { confirm: "You sure?" } %>
+    		<%= link_to "delete review", review, method: :delete, data: { confirm: "You sure?" } %>
     	<% end %>
-	<% end %>
+	  <% end %>
+    </div>
 
   </span>
 </li>

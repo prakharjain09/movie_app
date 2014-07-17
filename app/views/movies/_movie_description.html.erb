@@ -40,6 +40,7 @@
             <tr class="active">
                 <th>Rating</th>
                 <th>
+                  <div id="rating-value-div">
                     <% if @movie.total_votes == 0 %>
                         Not Rated
                     <% else %>
@@ -47,6 +48,7 @@
                         (Based on 
                         <%= @movie.total_votes %> vote)
                     <% end %>
+                  </div>
                 </th>
             </tr>
         
