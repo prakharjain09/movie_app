@@ -16,7 +16,7 @@
   <tbody>
     <tr>
       <th>
-        <%= image_tag(@movie.photo.url(), height: '317', width: '214') %>
+        <%= image_tag @movie.photo.url() %>
       </th>
       <th>
         <table class="table movie_table">

@@ -25,7 +25,7 @@ movie_list.each do |movie|
 	director = hash['Director']
 	info = hash['Plot']
 	cast = hash['Actors']
-	photo = hash['Poster']
+	photo = hash['Photo']
 	release_date = hash['Released']
 
 	Movie.create(name: name, director: director, info: info, cast: cast, photo: photo, release_date: release_date)
