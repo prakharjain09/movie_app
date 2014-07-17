@@ -1,10 +1,14 @@
-<li>
-  <%= gravatar_for user, size: 52 %>
-  <%= link_to user.name, user %>
+<tr class="all-users-table-row">
+	<td class="all-users-table-image">
+	  <%= gravatar_for user, size: 52 %>
+	</td>
 
-  <% 
-  if current_user.admin? && !current_user?(user) %>
-    | <%= link_to "delete", user, method: :delete,
-                                  data: { confirm: "You sure?" } %>
-  <% end %>
-</li>
+	<td class="all-users-table-details">
+	  <%= link_to user.name, user %>
+	  <div class="user-admin-options">
+	  <% if current_user.admin? && !current_user?(user) %>
+	    <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
+	  <% end %>
+	  </div>
+	</td>
+</tr>

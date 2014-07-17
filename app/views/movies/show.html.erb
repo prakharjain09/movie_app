@@ -1,8 +1,10 @@
 
 
 <% if signed_in? %>
+  <div class="review-watchlist-bar">
     <%= render 'watch_movies_form' %>
     <%= render 'rating_form' %>
+  </div>
 <% else %>
     <%= link_to "Sign in", signin_path %> to rate movie.
 <% end %>

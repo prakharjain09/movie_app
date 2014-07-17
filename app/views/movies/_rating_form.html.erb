@@ -1,16 +1,17 @@
 <div id="rating_container">
-<% if @rating.value == 0 %>
-    Rate Movie: 
-<% else %>
-    Your Ratings:
-<% end %>
-<div id="rating_div" class="rating"></div>
+    <% if @rating.value == 0 %>
+        Rate Movie: 
+    <% else %>
+        Your Ratings:
+    <% end %>
+    <span id="rating_div" class="rating"></span>
+
+    <%= form_for(@rating, :html => {:id => "rating_form"}) do |f| %>
+        <%= f.hidden_field :movie_id %>
+        <%= f.hidden_field :value %>
+    <% end %>
 </div>
 
-<%= form_for(@rating, :html => {:id => "rating_form"}) do |f| %>
-    <%= f.hidden_field :movie_id %>
-    <%= f.hidden_field :value %>
-<% end %>
 
 <script type="text/javascript"> 
     $( document ).ready(function() {

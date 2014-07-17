@@ -258,17 +258,29 @@ input {
   float: left;    
 }
 
-.rating {
-  padding-left:20px;
-  float: right;
-}
 
 #rating_container {
   float: right;
 }
 
+.rating {
+}
+
+
 #movie_title {
-  clear: both;      
+  float: left;
+}
+
+.review-watchlist-bar {
+  margin-bottom: 0px;
+}
+
+.movie-heading {
+  margin-top: 60px;
+}
+
+.movie-table-container {
+  margin-top: 90px;
 }
 
 
@@ -293,7 +305,6 @@ input {
   tr {
     margin-bottom: 20px;
   }
-
 }
 
 .movie_list_element {
@@ -359,4 +370,16 @@ input {
 
 .movie-admin {
   float: right;
+}
+
+.user-admin-options {
+  float: right;
+}
+
+.all-users-table {
+  width: 100%; 
+}
+
+.all-users-table-image {
+  width: 5%;
 }
