@@ -1,4 +1,5 @@
 class MoviesController < ApplicationController
+  require 'net/http'
   before_filter :signed_in_and_admin_user,     only: [:destroy, :create, :update, :new, :edit]
 
   def new
