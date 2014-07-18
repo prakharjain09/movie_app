@@ -17,6 +17,7 @@ class MoviesController < ApplicationController
 
   def show
   	@movie = Movie.find(params[:id])
+    @movie_imdb_rating = getImdbRating(@movie.name)
     if signed_in?
       @review = current_user.reviews.build(movie_id: params[:id])
       @rating = current_user.ratings.find_by_movie_id(params[:id])

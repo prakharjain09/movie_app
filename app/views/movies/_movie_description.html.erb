@@ -18,28 +18,32 @@
       <th>
         <%= image_tag(@movie.photo.url(), height: '317', width: '214') %>
       </th>
-      <th>
+      <td>
         <table class="table movie_table">
+          <colgroup>
+            <col span="1" style="width: 20%;">
+            <col span="1" style="width: 80%;">
+          </colgroup>
           <tbody>
-            <tr class="active">
+            <tr class="movie-table-left">
                 <th>Cast</th>
-                <th><%= @movie.cast %></th>
+                <td><%= @movie.cast %></td>
             </tr>
             <tr class="active">
                 <th>Director</th>
-                <th><%= @movie.director %></th>
+                <td><%= @movie.director %></td>
             </tr>
             <tr class="active">
                 <th>Release Date</th>
-                <th><%= @movie.release_date %></th>
+                <td><%= @movie.release_date %></td>
             </tr>
             <tr class="active">
                 <th>Info</th>
-                <th><%= @movie.info %></th>
+                <td><%= @movie.info %></td>
             </tr>
             <tr class="active">
                 <th>Rating</th>
-                <th>
+                <td>
                   <div id="rating-value-div">
                     <% if @movie.total_votes == 0 %>
                         Not Rated
@@ -49,13 +53,17 @@
                         <%= @movie.total_votes %> vote)
                     <% end %>
                   </div>
-                </th>
+                </td>
+            </tr>
+            <tr class="active">
+                <th>IMDB Rating</th>
+                <td><%= @movie_imdb_rating %></td>
             </tr>
         
 
           </tbody>
         </table>
-        <th>
+        <td>
     </tr>
 
   </tbody>
