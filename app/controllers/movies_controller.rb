@@ -17,7 +17,7 @@ class MoviesController < ApplicationController
 
   def show
   	@movie = Movie.find(params[:id])
-    @movie_imdb_rating = "Not Available"#getImdbRating(@movie.name)
+    @movie_imdb_rating = getImdbRating(@movie.name)
     if signed_in?
       @review = current_user.reviews.build(movie_id: params[:id])
       @rating = current_user.ratings.find_by_movie_id(params[:id])
@@ -75,6 +75,20 @@ private
 		end
 	end
 
+  def getImdbRating(movie)
+    uri = URI.parse(URI.encode("http://www.omdbapi.com/?t="+movie))
+    http = Net::HTTP.new(uri.host, uri.port)
+    request = Net::HTTP::Get.new(uri.request_uri)
+    response = http.request(request)
+
+    hash = JSON.parse response.body   
+    if hash['imdbRating'].nil?
+      hash['imdbRating'] = "Not Available"
+    else
+      hash['imdbRating'] = hash['imdbRating'].to_s
+    end
+    
+  end
 
 
 
