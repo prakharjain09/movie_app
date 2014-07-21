@@ -1,7 +1,11 @@
 MovieApp::Application.routes.draw do
 
   resources :users
-  resources :movies
+  resources :movies do
+    get :autocomplete_movie_name, on: :collection
+  end
+  match '/movies/autocomplete_search', to: 'movies#autocomplete_search'
+
   resources :sessions, only: [:new, :create, :destroy]
   resources :reviews, only: [:create, :destroy]
   resources :watch_movies, only: [:create, :destroy]

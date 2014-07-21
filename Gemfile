@@ -9,8 +9,8 @@ gem 'bootstrap-will_paginate', '0.0.6'
 gem 'alphabetical_paginate'
 gem 'jquery-raty-rails'
 gem 'paperclip', :git =>  "git://github.com/thoughtbot/paperclip.git"
-
-
+gem 'rails3-jquery-autocomplete'
+gem 'jquery-ui-rails'
 gem 'rails_12factor'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

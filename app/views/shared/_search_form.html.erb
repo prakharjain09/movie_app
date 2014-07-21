@@ -1,7 +1,17 @@
 <div class="center hero-unit search-box-container">
 <div class="search_form">
-<%= form_tag('/movies/search', :method => "post") do %>
-	<%= text_field_tag(:search_string, nil, placeholder: "Write movie name and press enter", onkeydown: 'if (event.keyCode == 13) { this.form.submit(); return false; }', class: "search_field") %>
+<%= form_tag 'movies/autocomplete_search' do %>
+  <%=   autocomplete_field_tag 'name', '', autocomplete_movie_name_movies_path, placeholder: "Write movie name and press enter", class: "search_field" %>
 <% end %>
+
+<% if false %>
+  <%= form_tag('/movies/search', :method => "post") do %>
+  	<%= text_field_tag(:search_string, nil, placeholder: "Write movie name and press enter", onkeydown: 'if (event.keyCode == 13) { this.form.submit(); return false; }', class: "search_field") %>
+  <% end %>
+<% end %>
+
 </div>
+</div>
+
+<div class="search_form">
 </div>

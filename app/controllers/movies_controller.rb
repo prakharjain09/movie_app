@@ -2,6 +2,8 @@ class MoviesController < ApplicationController
   require 'net/http'
   before_filter :signed_in_and_admin_user,     only: [:destroy, :create, :update, :new, :edit]
 
+  autocomplete :movie, :name, :full => true
+
   def new
   	@movie = Movie.new
   end
@@ -47,6 +49,17 @@ class MoviesController < ApplicationController
     else 
       @movies, @alphaParams = Movie.alpha_paginate(params[:letter], {:default_field => "All"}){|movie| movie.name}
       render 'index'
+    end
+  end
+
+  def autocomplete_search
+    @search_string = params[:name]
+    @movies = Movie.where("name like ?", "%#{params[:name]}%")
+    if @movies.count == 1
+      @movie = @movies.first
+      redirect_to @movie
+    else
+      render 'search'
     end
   end
 

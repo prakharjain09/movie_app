@@ -42,8 +42,8 @@ class Movie < ActiveRecord::Base
 	end
 
   def init
-    self.total_rating  ||= 0           #will set the default value only if it's nil
-    self.total_votes ||= 0 
+#    self.total_rating  ||= 0           #will set the default value only if it's nil
+#    self.total_votes ||= 0 
   end
 
 end
