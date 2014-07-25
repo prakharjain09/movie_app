@@ -14,7 +14,7 @@
 
 class Movie < ActiveRecord::Base
   attr_accessible :cast, :director, :info, :name, :release_date, :total_rating, :total_votes, :photo
-  after_initialize :init
+  #after_initialize :init
 
 
 

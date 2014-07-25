@@ -10,10 +10,11 @@ require "net/http"
 require "uri"
 require 'json'
 
-movie_list = ["The Shawshank Redemption", "The Godfather", "Inception", "The Matrix", "Seven Samurai", "Memento", "Gladiator", "The Dark Knight Rises", " Aliens", "Bicycle Thieves"]
+movie_list = ["The Shawshank Redemption", "The Godfather", "Inception", "The Matrix", "Seven Samurai", "Memento", "Gladiator", "The Dark Knight Rises", " Aliens", "Bicycle Thieves", "Transformers: Age of Extinction", "The Avengers", "Thor", "Dawn of the Planet of the Apes", "3 Idiots", "Planes: Fire & Rescue", "Christmas with a Capital C", "22 Jump Street"]
 i=0
 movie_list.each do |movie|
 	uri = URI.parse(URI.encode("http://www.omdbapi.com/?t="+movie))
+	puts uri
 	http = Net::HTTP.new(uri.host, uri.port)
 	request = Net::HTTP::Get.new(uri.request_uri)
 	response = http.request(request)

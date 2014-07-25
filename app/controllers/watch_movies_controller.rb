@@ -4,6 +4,10 @@ class WatchMoviesController < ApplicationController
   def create
   	@movie = Movie.find(params[:watch_movie][:movie_id])
     current_user.add_to_watch_list!(@movie)
+    respond_to do |format|
+      format.html { redirect_to current_user }
+      format.js
+    end
   end
 
 

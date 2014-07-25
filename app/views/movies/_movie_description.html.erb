@@ -1,8 +1,8 @@
 <div class="movie-heading">
   <div id="movie_title"> <%= @movie.name %></div> 
   <div class="movie-admin">  <% if signed_in? && current_user.admin? %>
-      <%= link_to "delete", @movie, method: :delete, data: { confirm: "You sure?" } %>
-      | <%= link_to "edit", edit_movie_path(@movie.id) %>
+      <%= link_to "Delete", @movie, method: :delete, data: { confirm: "You sure?" } %>
+      | <%= link_to "Edit", edit_movie_path(@movie.id) %>
     <% end %>
   </div>
 </div>

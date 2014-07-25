@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user, only: [:index, :edit, :update]
+  before_filter :signed_in_user, only: [:index, :edit, :update, :show, :destroy]
   before_filter :correct_user,   only: [:edit, :update]
   before_filter :admin_user,     only: :destroy
+  before_filter :correct_user_or_admin, only: :show
 
   def index
   	if current_user.admin?
@@ -66,8 +67,15 @@ private
 	    redirect_to root_url unless current_user?(@user)
 	end
 
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
+  end
+
+  def correct_user_or_admin
+    @user = User.find(params[:id])
+    if !current_user.admin? && !current_user?(@user)
+      redirect_to root_url
     end
+  end
 
 end
